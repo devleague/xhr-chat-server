@@ -21,6 +21,10 @@ server.connection({
   port: 1337
 });
 
+server.register({register: require( 'lout' ) }, function( err ) {
+  if ( err ) { console.log( err ) }
+});
+
 server.start();
 
 server.route({
@@ -69,6 +73,24 @@ function setNewMessageByChatroomId( request, reply ) {
 
   reply( db[request.params.id].messages );
 }
+
+server.route({
+  method: 'GET',
+  path: '/{id}/clear',
+  handler: function( request, reply ) {
+    var db = getDatabase( request.params.id );
+
+    db[request.params.id].messages = [];
+
+    // save the file
+    Fs.writeFile( './database/chatrooms.json', JSON.stringify( db ), function( err ) {
+      if ( err ) return console.log( err );
+      console.log( 'messages have been cleared from the room: ' + request.params.id );
+    });
+
+    reply( db[request.params.id].messages );
+  }
+});
 
 function getDatabase( roomId ) {
   var db = require( dbPath );

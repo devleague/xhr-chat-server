@@ -1,0 +1,15 @@
+{
+  "name": "xhr-chat-server",
+  "version": "0.0.1",
+  "description": "a chatroom server for students to interact with while learning XHR requests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dev League LLC",
+  "license": "MIT",
+  "dependencies": {
+    "hapi": "^8.5.2",
+    "joi": "^6.4.3"
+  }
+}

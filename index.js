@@ -42,8 +42,8 @@ server.route({
   config: {
     validate: {
       payload: {
-        name: Joi.string().trim().alphanum().min( 3 ).max( 16 ),
-        message: Joi.string().trim().min( 12 )
+        name: Joi.string().required().trim().alphanum().min( 3 ).max( 16 ),
+        message: Joi.string().required().trim().min( 12 )
       }
     }
   }

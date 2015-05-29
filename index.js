@@ -4,7 +4,13 @@ var Path  = require('path');
 
 var dbPath = Path.join(process.cwd(), '/database/chatrooms.json');
 
-var server = new Hapi.Server();
+var server = new Hapi.Server({
+  connections: {
+    router: {
+      stripTrailingSlash: true
+    }
+  }
+});
 server.connection({
   host: '0.0.0.0',
   port: 1337
@@ -14,7 +20,7 @@ server.start();
 
 server.route({
   method: 'GET',
-  path: '/chatroom/{id}',
+  path: '/{id}',
   handler: getMessagesByChatroomId
 });
 
@@ -26,7 +32,7 @@ function getMessagesByChatroomId(request, reply){
 
 server.route({
   method: 'POST',
-  path: '/chatroom/{id}',
+  path: '/{id}',
   handler: setNewMessageByChatroomId
 });
 

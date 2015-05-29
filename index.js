@@ -7,11 +7,15 @@ var dbPath = Path.join( process.cwd(), '/database/chatrooms.json' );
 
 var server = new Hapi.Server({
   connections: {
+    routes: {
+      cors: true
+    },
     router: {
       stripTrailingSlash: true
     }
   }
 });
+
 server.connection({
   host: '0.0.0.0',
   port: 1337

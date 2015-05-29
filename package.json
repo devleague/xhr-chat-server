@@ -11,5 +11,10 @@
   "dependencies": {
     "hapi": "^8.5.2",
     "joi": "^6.4.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devleague/xhr-chat-server"
+  },
+  "homepage": "https://github.com/devleague/xhr-chat-server"
 }
